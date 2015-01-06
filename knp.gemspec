@@ -7,17 +7,17 @@ require "knp/version"
 Gem::Specification.new do |s|
   s.name        = "knp"
   s.version     = Knp::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Knp."
-  s.description = "TODO: Description of Knp."
+  s.authors     = ['Killbill core team']
+  s.email       = ['killbilling-users@googlegroups.com']
+  s.homepage    = 'http://killbill.io'
+  s.summary     = 'Kill Bill Notifications Proxy'
+  s.description = 'Externally-facing proxy to forward notifications to Kill Bill'
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files = `git ls-files`.split("\n")
+  s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
-  s.add_dependency "rails", "~> 3.2.21"
-  # s.add_dependency "jquery-rails"
+  s.add_dependency "rails", "~> 3.2.0"
+  s.add_dependency "killbill-client", "~> 0.8.0"
 
   s.add_development_dependency "sqlite3"
 end
