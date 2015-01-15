@@ -8,7 +8,7 @@ Assuming your Knp public address is killbill-public.acme.com, configure the noti
 * https://killbill-public.acme.com/notifications/killbill-adyen
 * https://killbill-public.acme.com/notifications/killbill-bitpay
 
- If you have multiple Kill Bill clusters, you can specify an optional cluster parameter in the path (see also the configuration section):
+If you have multiple Kill Bill clusters, you can specify an optional cluster parameter in the path (see also the configuration section):
 
 * https://killbill-public.acme.com/notifications/killbill-adyen/europe
 * https://killbill-public.acme.com/notifications/killbill-adyen/us
