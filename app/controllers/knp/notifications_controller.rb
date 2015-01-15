@@ -2,12 +2,8 @@ module Knp
   class NotificationsController < ApplicationController
 
     # Catch-all
-    #
-    # Assuming your KNP public address is killbill-public.acme.com, configure the notification
-    # URL in the gateway to be: killbill-public.acme.com/notifications/<plugin-name>.
-    # Examples: killbill-public.acme.com/notifications/killbill-adyen, killbill-public.acme.com/notifications/killbill-bitpay
     def notify
-      notification = build_notification(params[:plugin_name])
+      notification = build_notification(params[:plugin_name], params[:cluster])
       kb_response  = notification.notify!
       build_response(kb_response)
     rescue => e
@@ -17,8 +13,8 @@ module Knp
 
     private
 
-    def build_notification(plugin_name)
-      notification             = Notification.new
+    def build_notification(plugin_name, cluster)
+      notification             = Notification.new(cluster)
       notification.plugin_name = plugin_name
       notification.body        = request.body.read
       notification.params      = request.query_parameters

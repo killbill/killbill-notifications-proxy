@@ -8,19 +8,21 @@ module Knp
     attr_accessor :user
     attr_accessor :reason
     attr_accessor :comment
+    attr_accessor :base_uri
     attr_accessor :api_key
     attr_accessor :api_secret
     attr_accessor :username
     attr_accessor :password
 
-    def initialize
-      self.user       = Knp.user || 'Knp'
-      self.reason     = Knp.reason
-      self.comment    = Knp.comment
-      self.api_key    = Knp.api_key
-      self.api_secret = Knp.api_secret
-      self.username   = Knp.username
-      self.password   = Knp.password
+    def initialize(cluster=nil)
+      self.user       = KNP_CONFIG.username(cluster)
+      self.reason     = KNP_CONFIG.reason(cluster)
+      self.comment    = KNP_CONFIG.comment(cluster)
+      self.base_uri   = URI.parse(KNP_CONFIG.base_uri(cluster))
+      self.api_key    = KNP_CONFIG.api_key(cluster)
+      self.api_secret = KNP_CONFIG.api_secret(cluster)
+      self.username   = KNP_CONFIG.username(cluster)
+      self.password   = KNP_CONFIG.password(cluster)
     end
 
     def notify!
@@ -51,6 +53,7 @@ module Knp
               :user       => user,
               :reason     => reason,
               :comment    => comment,
+              :base_uri   => base_uri,
               :api_key    => api_key,
               :api_secret => api_secret,
               :username   => username,
