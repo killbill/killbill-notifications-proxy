@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    knp (0.0.1)
+    knp (0.0.2)
       killbill-client (~> 0.10.2)
       rails (~> 3.2.0)
 
